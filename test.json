@@ -1,0 +1,7 @@
+{
+  "hello": {
+    "list": [1, 2, 3],
+    "string": "lol",
+    "boolean": true
+  }
+}
