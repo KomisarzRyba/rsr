@@ -8,15 +8,26 @@ pub enum Format {
 
 impl Format {
     pub fn from_extension(file: &str) -> Option<Format> {
-        std::path::Path::new(file)
+        match std::path::Path::new(file)
             .extension()
             .and_then(|ext| ext.to_str())
-            .and_then(|ext| match ext {
-                "json" => Some(Format::Json),
-                "yml" => Some(Format::Yaml),
-                "toml" => Some(Format::Toml),
-                "csv" => Some(Format::Csv),
-                &_ => None,
-            })
+        {
+            Some("json") => Some(Format::Json),
+            Some("yml") => Some(Format::Yaml),
+            Some("toml") => Some(Format::Toml),
+            Some("csv") => Some(Format::Csv),
+            _ => None,
+        }
+    }
+}
+
+impl ToString for Format {
+    fn to_string(&self) -> String {
+        match self {
+            Format::Json => String::from("Json"),
+            Format::Yaml => String::from("Yaml"),
+            Format::Toml => String::from("Toml"),
+            Format::Csv => String::from("Csv"),
+        }
     }
 }
