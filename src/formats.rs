@@ -2,6 +2,8 @@
 pub enum Format {
     Json,
     Yaml,
+    Toml,
+    Csv,
 }
 
 impl Format {
@@ -12,6 +14,8 @@ impl Format {
             .and_then(|ext| match ext {
                 "json" => Some(Format::Json),
                 "yml" => Some(Format::Yaml),
+                "toml" => Some(Format::Toml),
+                "csv" => Some(Format::Csv),
                 &_ => None,
             })
     }
