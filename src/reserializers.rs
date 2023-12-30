@@ -39,16 +39,10 @@ pub fn reserialize(
     let reserializer: Box<dyn Reserializer> = match (from_format, to_format) {
         (formats::Format::Json, formats::Format::Yaml) => Box::new(JsonYamlReserializer),
         (formats::Format::Json, formats::Format::Toml) => Box::new(JsonTomlReserializer),
-        (formats::Format::Json, formats::Format::Csv) => todo!(),
         (formats::Format::Yaml, formats::Format::Json) => Box::new(YamlJsonReserializer),
         (formats::Format::Yaml, formats::Format::Toml) => Box::new(YamlTomlReserializer),
-        (formats::Format::Yaml, formats::Format::Csv) => todo!(),
         (formats::Format::Toml, formats::Format::Json) => Box::new(TomlJsonReserializer),
         (formats::Format::Toml, formats::Format::Yaml) => Box::new(TomlYamlReserializer),
-        (formats::Format::Toml, formats::Format::Csv) => todo!(),
-        (formats::Format::Csv, formats::Format::Json) => todo!(),
-        (formats::Format::Csv, formats::Format::Yaml) => todo!(),
-        (formats::Format::Csv, formats::Format::Toml) => todo!(),
         _ => panic!("file already matches the format provided"),
     };
     reserializer.reserialize(content)

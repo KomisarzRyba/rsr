@@ -3,7 +3,6 @@ pub enum Format {
     Json,
     Yaml,
     Toml,
-    Csv,
 }
 
 impl Format {
@@ -15,8 +14,17 @@ impl Format {
             Some("json") => Some(Format::Json),
             Some("yml") => Some(Format::Yaml),
             Some("toml") => Some(Format::Toml),
-            Some("csv") => Some(Format::Csv),
             _ => None,
+        }
+    }
+}
+
+impl Format {
+    pub fn to_extension(&self) -> &str {
+        match self {
+            Format::Json => "json",
+            Format::Yaml => "yml",
+            Format::Toml => "toml",
         }
     }
 }
@@ -27,7 +35,6 @@ impl ToString for Format {
             Format::Json => String::from("Json"),
             Format::Yaml => String::from("Yaml"),
             Format::Toml => String::from("Toml"),
-            Format::Csv => String::from("Csv"),
         }
     }
 }

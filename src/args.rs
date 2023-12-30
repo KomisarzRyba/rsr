@@ -7,4 +7,6 @@ pub struct RsrArgs {
     pub input_file: String,
     /// Format of the output file
     pub format: crate::formats::Format,
+    /// Output file path
+    pub output: Option<String>,
 }
