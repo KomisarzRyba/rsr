@@ -20,7 +20,7 @@ impl Format {
 }
 
 impl Format {
-    pub fn to_extension(&self) -> &str {
+    pub fn extension(&self) -> &str {
         match self {
             Format::Json => "json",
             Format::Yaml => "yml",
